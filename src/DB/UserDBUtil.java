@@ -72,14 +72,10 @@ public class UserDBUtil {
 		return true;
 	}
 
-
-
-
-
-	/*
-	 * sample
-	 * ユーザデータベースへの追加・値取得
-	 * 依頼データベースへの追加・値取得
+	/**
+	 * <p>SQLManager内のメソッドを使用してSQL文を実行するためのサンプルメソッド</p>
+	 * <p>ユーザデータベースへの追加・値取得、依頼データベースへの追加・値取得のテストプログラムが入っている</p>
+	 * @author 5409 坂本 雄一朗
 	 */
 	public static boolean sample() {
 		String query1 = "INSERT INTO Users(UserID,Name,Password) VALUES('testUserID','testName','testPassword')";
@@ -124,7 +120,7 @@ public class UserDBUtil {
 	 * @author 5415 土田 雄輝
 	 * @return 全ユーザIDが格納されたString配列、失敗した場合はnull
 	 */
-	
+
 	public static String[] getAllUserID() {
 		String[] userIDs;
 		int i=0;
@@ -146,21 +142,21 @@ public class UserDBUtil {
 		}
 		return (userIDs);
 	}
-	
+
 	/*
 	 * ログイン認証メソッド(未完成)
 	 */
 	public static User login( String userId, String pw ){
 		return new User("taro jiro",userId,0);
 	}
-	
+
 	/*
 	 * ユーザインスタンスの取得(未完成)
 	 */
 	public static User getUser( String userId ){
 		return new User("jiro taro 2",userId,0);
 	}
-	
+
 
 
 }
