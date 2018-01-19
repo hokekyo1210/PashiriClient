@@ -73,12 +73,11 @@ public class RequestManagement {
      * @param id: 依頼ID(int型)
      * @return RequestRecord{依頼ID(int)、依頼名(string)、発注者ID(string)、受注者ID(string(存在しない場合：-1))、報酬ポイント(int)、デポジット(int)、内容(string)、状態(int)、期限(Date)}
      */
-    public static RequestRecord showOrder(int id){ {
-    	if (id < 1 || id == null){
+    public static RequestRecord showOrder(int id){
+    		if (id == -1){
             System.out.println("正しい依頼IDが入力されていません");
             return null;
-        }
-        else{
+        }else{
             return RequestDBUtil.getRequest(id);
         }
     }
