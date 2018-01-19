@@ -1,10 +1,11 @@
 package Request;
-import java.awt.List;
 import java.util.ArrayList;
 
-import org.sqlite.core.DB;
-
-import DB. *;
+import DB.Pair;
+import DB.RequestDBUtil;
+import DB.RequestRecord;
+import DB.User;
+import DB.UserDBUtil;
 
 public class RequestManagement {
 	/**
@@ -103,12 +104,12 @@ public class RequestManagement {
 	 * @return 削除の可否
 	 */
 	public boolean cancelOrder(String userId, int reqId){
-	    RequestRecord req = getRequest(reqId);
+	    RequestRecord req = RequestDBUtil.getRequest(reqId);
 	    String clientId = req.getClientId();
 	    if(userId.equals(clientId)){
 	        return false;
 	    }
-	    return removeRequest(int);
+	    return RequestDBUtil.removeRequest(reqId);
 	}
 
 
