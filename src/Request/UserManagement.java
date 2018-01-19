@@ -41,7 +41,7 @@ public class UserManagement {
 	* @author	5422 湯浅智哉
 	* @param	userId	ユーザID
 	* @param	passwd	パスワード
-	* @return	ログインのの成功可否
+	* @return	ログインの成功可否
 	*/
 	public boolean login(String userid, String passwd){
 		User u = UserDBUtil.login(userid, passwd);
