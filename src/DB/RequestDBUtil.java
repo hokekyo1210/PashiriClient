@@ -70,14 +70,14 @@ public class RequestDBUtil {
 	}
 
 	/**
-	* <p>setPointメソッドは、依頼IDに該当する依頼のポイントを設定（更新）する。</p>
-	*
-	* @author 5402 越後優太
-	*
-	* @param requestId 設定目標の依頼ID
-	* @param point 設定するポイントの値
-	* @return ポイント設定の成否(成功:true, 失敗:false)
-	*/
+	 * <p>setPointメソッドは、依頼IDに該当する依頼のポイントを設定（更新）する。</p>
+	 *
+	 * @author 5402 越後優太
+	 *
+	 * @param requestId 設定目標の依頼ID
+	 * @param point 設定するポイントの値
+	 * @return ポイント設定の成否(成功:true, 失敗:false)
+	 */
 	public static boolean setPoint( int requestId, int point ) {
 		String query = "UPDATE Requests SET Point = " + point + " WHERE RequestID = " + requestId;	//SQL文を生成
 		try {
@@ -128,14 +128,14 @@ public class RequestDBUtil {
 
 
 	/**
-	* <p>setContractorIDメソッドは、依頼IDに該当する依頼の受注者IDを設定（更新）する。</p>
-	*
-	* @author 5402 越後優太
-	*
-	* @param requestId 設定目標の依頼ID
-	* @param contractorID 設定する受注者ID
-	* @return 受注者設定の成否(成功:true, 失敗:false)
-	*/
+	 * <p>setContractorIDメソッドは、依頼IDに該当する依頼の受注者IDを設定（更新）する。</p>
+	 *
+	 * @author 5402 越後優太
+	 *
+	 * @param requestId 設定目標の依頼ID
+	 * @param contractorID 設定する受注者ID
+	 * @return 受注者設定の成否(成功:true, 失敗:false)
+	 */
 	public static boolean setContractorID( int requestId, String contractorID ) {
 		String query = "UPDATE Requests SET ContractorID = '" + contractorID + "' WHERE RequestID = " + requestId;	//SQL文を生成
 		//System.out.println( query );
@@ -149,14 +149,14 @@ public class RequestDBUtil {
 	}
 
 	/**
-	* <p>setRequestNameメソッドは、依頼IDに該当する依頼の依頼名を設定（更新）する。</p>
-	*
-	* @author 5402 越後優太
-	*
-	* @param requestId 設定目標の依頼ID
-	* @param name 設定する依頼名
-	* @return 依頼名設定の成否(成功:true, 失敗:false)
-	*/
+	 * <p>setRequestNameメソッドは、依頼IDに該当する依頼の依頼名を設定（更新）する。</p>
+	 *
+	 * @author 5402 越後優太
+	 *
+	 * @param requestId 設定目標の依頼ID
+	 * @param name 設定する依頼名
+	 * @return 依頼名設定の成否(成功:true, 失敗:false)
+	 */
 	public static boolean setRequestName( int requestId, String name ) {
 		String query = "UPDATE Requests SET Name = '" + name + "' WHERE RequestID = " + requestId;	//SQL文を生成
 		System.out.println( query );
