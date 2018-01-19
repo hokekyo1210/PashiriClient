@@ -44,8 +44,14 @@ public class RequestDBUtil {
    		 return true;
     }
 
-	/*
-	 * 依頼の締切日時の追加
+	/**
+	 * <p>setDeadlineメソッドは、依頼IDに該当する依頼の締切日時を設定（更新）する。</p>
+	 *
+	 * @author 5402 越後優太
+	 *
+	 * @param requestId 設定目標の依頼ID
+	 * @param deadline 設定する締切日時
+	 * @return 締切日時設定の成否(成功:true, 失敗:false)
 	 */
 	public static boolean setDeadline( int requestId, Date deadline ){
 		// java.util.Dateからdatetime型の形式「yyyy-MM-dd HH:mm:ss」に整形
@@ -63,10 +69,15 @@ public class RequestDBUtil {
 		return true; //期限設定成功
 	}
 
-	/*
-	 * ポイントの設定
-	 * 依頼テーブルのpointの値を変更
-	 */
+	/**
+	* <p>setPointメソッドは、依頼IDに該当する依頼のポイントを設定（更新）する。</p>
+	*
+	* @author 5402 越後優太
+	*
+	* @param requestId 設定目標の依頼ID
+	* @param point 設定するポイントの値
+	* @return ポイント設定の成否(成功:true, 失敗:false)
+	*/
 	public static boolean setPoint( int requestId, int point ) {
 		String query = "UPDATE Requests SET Point = " + point + " WHERE RequestID = " + requestId;	//SQL文を生成
 		try {
@@ -116,9 +127,15 @@ public class RequestDBUtil {
 
 
 
-	/*
-	 * 受注者の設定
-	 */
+	/**
+	* <p>setContractorIDメソッドは、依頼IDに該当する依頼の受注者IDを設定（更新）する。</p>
+	*
+	* @author 5402 越後優太
+	*
+	* @param requestId 設定目標の依頼ID
+	* @param contractorID 設定する受注者ID
+	* @return 受注者設定の成否(成功:true, 失敗:false)
+	*/
 	public static boolean setContractorID( int requestId, String contractorID ) {
 		String query = "UPDATE Requests SET ContractorID = '" + contractorID + "' WHERE RequestID = " + requestId;	//SQL文を生成
 		//System.out.println( query );
@@ -131,9 +148,15 @@ public class RequestDBUtil {
 		return true;
 	}
 
-	/*
-	 * 依頼名の設定
-	 */
+	/**
+	* <p>setRequestNameメソッドは、依頼IDに該当する依頼の依頼名を設定（更新）する。</p>
+	*
+	* @author 5402 越後優太
+	*
+	* @param requestId 設定目標の依頼ID
+	* @param name 設定する依頼名
+	* @return 依頼名設定の成否(成功:true, 失敗:false)
+	*/
 	public static boolean setRequestName( int requestId, String name ) {
 		String query = "UPDATE Requests SET Name = '" + name + "' WHERE RequestID = " + requestId;	//SQL文を生成
 		System.out.println( query );
@@ -145,6 +168,7 @@ public class RequestDBUtil {
 		}
 		return true;
 	}
+	
 	/**
 	 *
 	 * <p>現在登録されている依頼の取得を行う。ただし、引数の内容によって絞り込み検索(ORで検索)が行える</P>
