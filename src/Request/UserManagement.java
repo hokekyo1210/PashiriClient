@@ -1,5 +1,10 @@
 package Request;
-import DB. *;
+import java.util.Date;
+
+import DB.RequestDBUtil;
+import DB.RequestRecord;
+import DB.User;
+import DB.UserDBUtil;
 
 public class UserManagement {
 	/**
@@ -25,6 +30,7 @@ public class UserManagement {
 	 * @return	登録成功の可否。
 	*/
 	public boolean addQuest(String requestName, int point, int advancePoint, String details, Date deadline){
-		return addRequest(String requestName, int point, int advancePoint, String details, Date deadline);
+		RequestRecord ret = RequestDBUtil.addRequest(requestName, point, advancePoint, details, deadline);
+		return (ret==null)?false:true;
 	}
 }
