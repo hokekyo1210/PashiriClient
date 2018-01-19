@@ -10,12 +10,11 @@ public class UserManagement {
 	* @return	ユーザ追加の成功可否。
 	*/
 	public boolean addUser(String userId, String passwd, String name){
-		UserDBUtil newComer = getUser(userId);
-		if(newComer.userID != null || !newComer.useID.isEmpty())
-			return false;
+		User newComer = UserDBUtil.getUser(userId);
+		if(newComer == null)return false;
 		return addUser(userId, passwd, name);
 	}
-	
+
 	/**
 	 * @author	5419 的野汰威
 	 * @param	requestName 依頼名
@@ -27,5 +26,5 @@ public class UserManagement {
 	*/
 	public boolean addQuest(String requestName, int point, int advancePoint, String details, Date deadline){
 		return addRequest(String requestName, int point, int advancePoint, String details, Date deadline);
-	}	
+	}
 }
