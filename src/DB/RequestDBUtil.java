@@ -105,12 +105,11 @@ public class RequestDBUtil {
 				}
 			}
 			else {
-				rr.setRequestId(-1);
-				return rr;
+				return null;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			return rr;
+			return null;
 		}
 		return rr;
 	}
