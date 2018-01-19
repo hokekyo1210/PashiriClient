@@ -53,20 +53,18 @@ public class RequestManagement {
 	}
 
 	/**
-	 * 機能：受注されていないRequestRecord型の配列データを返す
+	 * 機能：未受注の依頼をRequestRecord型のリストで返す
 	 * @author 5410 鈴木勇哉
 	 * @return ArrayList<RequestRecord> 型の配列
 	 */
-	public static ArrayList<RequestRecord> list_reqest(){
-		Pair<Integer,String> pair[] = RequestDBUtil.getRequests(null, null, -1);
-		ArrayList <RequestRecord> records = new ArrayList<RequestRecord>();
-		for(Pair<Integer, String> i: pair){
-			RequestRecord req = getRequest(i.first);
-			if(req.getContractorId() == -1){
-				records.add(req);
-			}
+	public static ArrayList<RequestRecord> getAllYetOrder(){
+		Pair<Integer,String>[] requests = RequestDBUtil.getRequests(null, "-1", -1);
+		ArrayList <RequestRecord> ret = new ArrayList<RequestRecord>();
+		for(int i = 0; i < requests.length; i++) {
+			RequestRecord req = RequestDBUtil.getRequest(requests[i].first);
+			ret.add(req);
 		}
-		return records;
+		return ret;
 	}
 
 	/**
