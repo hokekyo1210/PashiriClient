@@ -90,9 +90,9 @@ public class RequestManagement {
 	 * @return 受注の成功の可否
 	 */
 	public boolean postOrder(int reqId, String posterId){
-		RequestRecord req = getRequest(reqId);
-		if(req.getRequestId == -1)return false;
-		return setContractorID(reqId, posterId);
+		RequestRecord req = RequestDBUtil.getRequest(reqId);
+		if(req.getRequestId() == -1)return false;
+		return RequestDBUtil.setContractorID(reqId, posterId);
 	}
 
 	/**
