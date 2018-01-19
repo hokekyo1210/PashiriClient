@@ -8,6 +8,7 @@ import DB.UserDBUtil;
 
 public class UserManagement {
 	/**
+	 * <p>ユーザの追加の実行とその可否を返すメソッド</p>
 	* @author	5423和田幹広
 	* @param	userId	ユーザID
 	* @param	passwd	パスワード
@@ -21,6 +22,7 @@ public class UserManagement {
 	}
 
 	/**
+	 * <p>依頼の追加の実行とその可否を返すメソッド</p>
 	 * @author	5419 的野汰威
 	 * @param	requestName 依頼名
 	 * @param	point 報酬ポイント数
@@ -35,6 +37,7 @@ public class UserManagement {
 	}
 
 	/**
+	 * <p>ログインの実行とその可否を返すメソッド</p>
 	* @author	5422 湯浅智哉
 	* @param	userId	ユーザID
 	* @param	passwd	パスワード

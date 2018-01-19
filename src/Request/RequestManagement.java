@@ -9,6 +9,7 @@ import DB.UserDBUtil;
 
 public class RequestManagement {
 	/**
+	 * <p>全ユーザのインスタンスを取得するメソッド</p>
 	* @author	5417成岡大輝
 	* @return	全ユーザの情報が格納されたリスト。
 	*/
@@ -23,7 +24,7 @@ public class RequestManagement {
 	}
 
 	/**
-     * <p> ユーザIDを引数に、そのユーザが発注している依頼の一覧を取得 </p>
+     * <p> ユーザIDを引数に、そのユーザが発注している依頼の一覧を取得するメソッド </p>
      * @author 5408 小林朝陽
      * @param userId ユーザID (String)
      * @return Pair配列 (依頼IDと依頼内容をまとめたクラスの配列, 失敗した場合はnull)
@@ -38,7 +39,7 @@ public class RequestManagement {
     }
 
     /**
-	 *機能：ユーザIDを引数に、そのユーザが受注している依頼の一覧を取得
+	 *<p>ユーザIDを引数に、そのユーザが受注している依頼の一覧を取得するメソッド</p>
 	 * @author 5401 打田将也
 	 * @param userId:ユーザID
 	 * @return 依頼IDと依頼名をまとめたPair(失敗した場合はnull)
@@ -54,7 +55,7 @@ public class RequestManagement {
 	}
 
 	/**
-	 * 機能：未受注の依頼をRequestRecord型のリストで返す
+	 * <p>未受注の依頼をRequestRecord型のリストで返すメソッド</p>
 	 * @author 5410 鈴木勇哉
 	 * @return ArrayList<RequestRecord> 型の配列
 	 */
@@ -69,7 +70,7 @@ public class RequestManagement {
 	}
 
 	/**
-     * 依頼IDを引数にそのIDの依頼の詳細情報を取得
+     * <p>依頼IDを引数にそのIDの依頼の詳細情報を取得するメソッド</p>
      * @author 5414 張ニコラス謙豪
      * @param id: 依頼ID(int型)
      * @return RequestRecord{依頼ID(int)、依頼名(string)、発注者ID(string)、受注者ID(string(存在しない場合：-1))、報酬ポイント(int)、デポジット(int)、内容(string)、状態(int)、期限(Date)}
