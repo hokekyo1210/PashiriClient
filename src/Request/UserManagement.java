@@ -33,4 +33,16 @@ public class UserManagement {
 		RequestRecord ret = RequestDBUtil.addRequest(requestName, point, advancePoint, details, deadline);
 		return (ret==null)?false:true;
 	}
+
+	/**
+	* @author	5422 湯浅智哉
+	* @param	userId	ユーザID
+	* @param	passwd	パスワード
+	* @return	ログインのの成功可否
+	*/
+	public boolean login(String userid, String passwd){
+		User u = UserDBUtil.login(userid, passwd);
+		if(u != null)return true;
+		else return false;
+	}
 }
