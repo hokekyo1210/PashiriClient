@@ -2,18 +2,25 @@ package Request;
 import java.awt.List;
 import java.util.ArrayList;
 
+import org.sqlite.core.DB;
+
 import DB. *;
 
 public class RequestManagement {
-	/** 
+	/**
 	* @author	5417成岡大輝
 	* @return	全ユーザの情報が格納されたリスト。
 	*/
-	public void getUsersList(){
-		List<User> userList = getAllUsers(); // DBから全ユーザの情報を取得するメソッド。DB班の実装待ち。名称未定。
-		return userList;
+	public ArrayList<User> getUsersList(){
+		String[] userIds = UserDBUtil.getAllUserID();// DBから全ユーザの情報を取得するメソッド。DB班の実装待ち。名称未定。
+		ArrayList<User> ret = new ArrayList<User>();
+		for(int i = 0; i < userIds.length; i++) {
+			User u = UserDBUtil.getUser(userIds[i]);
+			ret.add(u);
+		}
+		return ret;
 	}
-	
+
 	/**
      * <p> ユーザIDを引数に、そのユーザが発注している依頼の一覧を取得 </p>
      * @author 5408 小林朝陽
@@ -28,7 +35,7 @@ public class RequestManagement {
             return RequestDBUtil.getRequests(userId, null, -1);
         }
     }
-    
+
     /**
 	 *機能：ユーザIDを引数に、そのユーザが受注している依頼の一覧を取得
 	 * @author 5401 打田将也
@@ -44,7 +51,7 @@ public class RequestManagement {
 			return RequestDBUtil.getRequests(null, userId, -1);
 		}
 	}
-	
+
 	/**
 	 * 機能：受注されていないRequestRecord型の配列データを返す
 	 * @author 5410 鈴木勇哉
@@ -61,7 +68,7 @@ public class RequestManagement {
 		}
 		return records;
 	}
-	
+
 	/**
      * 依頼IDを引数にそのIDの依頼の詳細情報を取得
      * @author 5414 張ニコラス謙豪
@@ -70,14 +77,14 @@ public class RequestManagement {
      */
     public static RequestRecord showOrder(int id){ {
     	if (id < 1 || id == null){
-            System.out.println("正しい依頼IDが入力されていません"); 
+            System.out.println("正しい依頼IDが入力されていません");
             return null;
         }
         else{
             return RequestDBUtil.getRequest(id);
         }
     }
-    
+
     /**
 	 * <p> 依頼の受注を行うメソッド </p>
 	 * @author 5418藤野眞人
@@ -90,7 +97,7 @@ public class RequestManagement {
 		if(req.getRequestId == -1)return false;
 		return setContractorID(reqId, posterId);
 	}
-	
+
 	/**
 	 * <p> 受注のキャンセルを行う </p>
 	 * @author 5413 多田明貴子
@@ -106,7 +113,7 @@ public class RequestManagement {
 	    }
 	    return removeRequest(int);
 	}
-	
-	
-	
+
+
+
 }
