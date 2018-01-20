@@ -215,16 +215,52 @@ public class RequestDBUtil {
 
 
 	/*
-	 * 依頼の追加(未完成)
-	 */
-	public static RequestRecord addRequest( String requestName, int point , int advancePoint, String details, Date deadline  ){
-		return new RequestRecord();
+	*<p>addRequestメソッドは依頼の基本情報を登録する。</p>
+	*
+	*@author 5416 中嶋優太, 5415 土田雄輝
+	*
+	*@param requestName  依頼の名前
+	*@param point　   獲得ポイント
+	*@param AdvancePoint 前金
+	*@param details  	依頼内容
+	*@param deadline 	期限
+	*
+	*@return 追加に成功した場合はRequestRecordのインスタンス、失敗であればnull
+	*/
+	public static RequestRecord addRequest( String requestName, int point,
+	                           	int advancePoint, String details, Date deadline){
+	SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	String convDeadline = sdFormat.format( deadline );
+	   String query = "Insert into Requests(Name,Point,AdvancePoint,Details,Deadline) values('"+requestName+"','"+point+"','"+advancePoint+"','"+details+"', '"+convDeadline+"' )";
+	   System.out.println(query);
+	   try {
+		   	SQLManager.requestDBUpdate(query);
+	   		ResultSet resultSet = SQLManager.requestDBQuery("select last_insert_id()");
+	   		resultSet.last();
+	   		int requestID = resultSet.getInt("last_insert_id()");
+	   		return getRequest(requestID);
+	   } catch (Exception e) {
+	   	e.printStackTrace();
+	   	return null; 
+	   }
 	}
-
+	
 	/*
-	 * 依頼の削除(未完成)
-	 */
+	*<p>removeRequestメソッドは依頼を削除する。</p>
+	*
+	*@author 5416 中嶋優太
+	*
+	*@param requestId 依頼の管理ID
+	*@return クエリの成否
+	*/
 	public static boolean removeRequest( int requestId ){
-		return true;
+	   String query = "Delete from Requests where RequestID = '" +requestId+"'";
+	   try {
+	   	SQLManager.requestDBUpdate(query);
+	      	} catch (Exception e){
+	       	e.printStackTrace();
+	       	return false; 
+	   	}
+	   	return true; 
 	}
 }
