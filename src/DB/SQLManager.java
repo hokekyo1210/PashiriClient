@@ -6,7 +6,7 @@ import java.sql.Statement;
 
 /**
  * <p>MYSQLに接続し、引数に取ったクエリ文を実行するクラス</p>
- * @author 5414 土田,5409 坂本 雄一朗
+ * @author 5415 土田,5409 坂本 雄一朗
  *
  */
 public class SQLManager {
@@ -21,7 +21,7 @@ public class SQLManager {
 
 	/**
 	 * <p>MYSQLとの接続を行うメソッド</p>
-	 * @author 5414 土田,5409 坂本 雄一朗
+	 * @author 5415 土田,5409 坂本 雄一朗
 	 * @throws Exception
 	 */
 	public static void launchSQLManager() throws Exception{
@@ -32,7 +32,7 @@ public class SQLManager {
 
 	/**
 	 * <p>requestDB(依頼データベース)へのSELECT文の実行を行うメソッド</p>
-	 * @author 5414 土田,5409 坂本 雄一朗
+	 * @author 5415 土田,5409 坂本 雄一朗
 	 * @param query(実行するクエリ文)
 	 * @return 実行結果が入ったStatementオブジェクト
 	 * @throws Exception
@@ -44,7 +44,7 @@ public class SQLManager {
 
 	/**
 	 * <p>requestDB(依頼データベース)へのUPDATE,INSERT,DELETE文の実行を行うメソッド</p>
-	 * @author 5414 土田,5409 坂本 雄一朗
+	 * @author 5415 土田,5409 坂本 雄一朗
 	 * @param query(実行するクエリ文)
 	 * @return 実行結果が入ったStatementオブジェクト
 	 * @throws Exception
@@ -56,7 +56,7 @@ public class SQLManager {
 
 	/**
 	 * <p>userDB(ユーザデータベース)へのSELECT文の実行を行うメソッド</p>
-	 * @author 5414 土田,5409 坂本 雄一朗
+	 * @author 5415 土田,5409 坂本 雄一朗
 	 * @param query(実行するクエリ文)
 	 * @return 実行結果が入ったStatementオブジェクト
 	 * @throws Exception
@@ -69,7 +69,7 @@ public class SQLManager {
 
 	/**
 	 * <p>userDB(ユーザデータベース)へのUPDATE,INSERT,DELETE文の実行を行うメソッド</p>
-	 * @author 5414 土田,5409 坂本 雄一朗
+	 * @author 5415 土田,5409 坂本 雄一朗
 	 * @param query(実行するクエリ文)
 	 * @return 実行結果が入ったStatementオブジェクト
 	 * @throws Exception

@@ -1,7 +1,7 @@
 package DB;
 /**
  * <p>2つの情報を格納するためのクラス</p>
- * @author 5414 土田
+ * @author 5415 土田
  *
  * @param <T>
  * @param <O>

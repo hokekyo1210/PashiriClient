@@ -10,7 +10,7 @@ import DB.UserDBUtil;
 public class Main {
 	/**
 	 * <p>Mainメソッド。現在はテスト用、使用方法の説明用として使用</p>
-	 * @author 5414 土田,5409 坂本 雄一朗
+	 * @author 5415 土田,5409 坂本 雄一朗
 	 * @param args
 	 * @throws Exception
 	 */

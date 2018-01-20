@@ -6,7 +6,7 @@ import java.util.Date;
 
 /**
  * <p>requestDB(依頼データベース)を操作するためのクラス</p>
- * @author 5414 土田
+ * @author 5415 土田
  *
  */
 public class RequestDBUtil {
