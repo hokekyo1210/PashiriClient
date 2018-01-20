@@ -29,9 +29,13 @@ public class RequestDBUtil {
 		return true;
 	}
 
-	/*
-	 * 内容の設定
-	 */
+	/**
+	  * 引数detailsの文字列をrequestIdのDeatailsカラムに記入する
+	  * @author 5412 滝波 一真
+	  * @param requestId
+	  * @param details
+	  * @return 成功->依頼情報が代入されたRequestRecordを返す,失敗->コンストラクタで初期化されたRequestRecordを返す
+	  */
 	public static boolean setDetails( int requestId, String details ){
     	String query = "UPDATE Requests SET Details = '"+details+"' where RequestID='"+requestId+"'";
    		//System.out.printf("sql:%s",query);
@@ -78,9 +82,12 @@ public class RequestDBUtil {
 		return true;
 	}
 
-	/*
-	 * 依頼の取得
-	 */
+	/**
+	  * 引数requestIdの依頼情報を取得する
+	  * @author 5412 滝波 一真
+	  * @param requestId
+	  * @return 成功->依頼情報が代入されたRequestRecordを返す,失敗->コンストラクタで初期化されたRequestRecordを返す
+	  */
 	public static RequestRecord getRequest( int requestId ) {
 		String query = "SELECT * FROM Requests WHERE RequestID='"+requestId+"'";
 		System.out.printf("sql:%s\n",query);
@@ -205,7 +212,7 @@ public class RequestDBUtil {
 
 		}
 	}
-	
+
 
 	/*
 	 * 依頼の追加(未完成)
@@ -213,7 +220,7 @@ public class RequestDBUtil {
 	public static RequestRecord addRequest( String requestName, int point , int advancePoint, String details, Date deadline  ){
 		return new RequestRecord();
 	}
-	
+
 	/*
 	 * 依頼の削除(未完成)
 	 */
