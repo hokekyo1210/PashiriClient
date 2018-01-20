@@ -34,7 +34,7 @@ public class RequestDBUtil {
 	  * @author 5412 滝波 一真
 	  * @param requestId
 	  * @param details
-	  * @return 成功->依頼情報が代入されたRequestRecordを返す,失敗->コンストラクタで初期化されたRequestRecordを返す
+	  * @return 成功:依頼情報が代入されたRequestRecordを返す,失敗:コンストラクタで初期化されたRequestRecordを返す
 	  */
 	public static boolean setDetails( int requestId, String details ){
     	String query = "UPDATE Requests SET Details = '"+details+"' where RequestID='"+requestId+"'";
@@ -86,7 +86,7 @@ public class RequestDBUtil {
 	  * 引数requestIdの依頼情報を取得する
 	  * @author 5412 滝波 一真
 	  * @param requestId
-	  * @return 成功->依頼情報が代入されたRequestRecordを返す,失敗->コンストラクタで初期化されたRequestRecordを返す
+	  * @return 成功:依頼情報が代入されたRequestRecordを返す,失敗:コンストラクタで初期化されたRequestRecordを返す
 	  */
 	public static RequestRecord getRequest( int requestId ) {
 		String query = "SELECT * FROM Requests WHERE RequestID='"+requestId+"'";

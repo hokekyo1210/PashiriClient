@@ -39,7 +39,7 @@ public class UserManagement {
 	/**
 	 * <p>ログインの実行とその可否を返すメソッド</p>
 	* @author	5422 湯浅智哉
-	* @param	userId	ユーザID
+	* @param	userid	ユーザID
 	* @param	passwd	パスワード
 	* @return	ログインの成功可否
 	*/
