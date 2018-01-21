@@ -144,17 +144,50 @@ public class UserDBUtil {
 	}
 
 	/*
-	 * ログイン認証メソッド(未完成)
+	 * ログイン認証メソッド
 	 */
 	public static User login( String userId, String pw ){
-		return new User("taro jiro",userId,0);
+        String query = "SELECT * FROM Users WHERE (UserID, Password) = ('"+userId+"','"+pw+"')"; 
+    	try{
+                       	ResultSet rs =SQLManager.userDBQuery(query); 
+                       	if(rs.next()) {
+                                          	rs.previous();
+                                          	System.out.println("login ok");
+                                          	return getUser(userId);
+                       	}else {
+                                          	return null;
+                       	}
+    	}catch(Exception e){
+                       	e.printStackTrace();
+                       	return null;
+    	}
 	}
 
+
 	/*
-	 * ユーザインスタンスの取得(未完成)
+	 * ユーザインスタンスの取得
 	 */
 	public static User getUser( String userId ){
-		return new User("jiro taro 2",userId,0);
+		String sql = "SELECT * from Users where UserID = '"+userId+"'";
+		
+		try{
+			ResultSet rs =SQLManager.userDBQuery(sql);
+			if(rs.next()) {
+				rs.previous();
+				while(rs.next()) {
+					String name = rs.getString("Name");
+					String userID = rs.getString("UserID");
+					int point = rs.getInt("Point");
+					return new User(name,userID,point);
+				}
+			}else {
+				return null;
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+			return null;
+		}
+		return null;
 	}
 
 
