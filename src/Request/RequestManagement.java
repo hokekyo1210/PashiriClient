@@ -90,13 +90,19 @@ public class RequestManagement {
 	 * @param  reqId	依頼id
 	 * @return 削除の可否
 	 */
-	public boolean cancelOrder(String userId, int reqId){
+	public static boolean cancelOrder(String userId, int reqId){
 	    RequestRecord req = RequestDBUtil.getRequest(reqId);
 	    String clientId = req.getClientId();
 	    if(userId.equals(clientId)){
 	        return false;
 	    }
 	    return RequestDBUtil.removeRequest(reqId);
+	}
+
+	public static boolean addQuest(String request_name, String userID, int point, int deposit, String contents,
+			String date) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 

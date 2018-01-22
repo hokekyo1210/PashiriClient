@@ -6,6 +6,7 @@ import java.util.Scanner;
 import DB.Pair;
 import DB.RequestRecord;
 import DB.User;
+import DB.UserDBUtil;
 import Request.RequestManagement;
 import Request.UserManagement;
 
@@ -63,7 +64,7 @@ public class CUI {
 	/*--鈴木 終わり--*/
 
 	/*--5407 小島--*/
-	public static void questDetail() {
+	public void questDetail() {
 		System.out.printf("パシリ番号:");
 	    Scanner scanner = new Scanner(System.in);
         int number = scanner.nextInt();
@@ -79,7 +80,7 @@ public class CUI {
 	    scanner.close();
 	}
 	
-	public static void questRequest(String userID) {
+	public void questRequest(String userID) {
 		System.out.print("受注する依頼ID：");
 	    Scanner scanner = new Scanner(System.in);
         int ID = scanner.nextInt();
@@ -90,19 +91,12 @@ public class CUI {
 			System.out.printf("受注失敗\n");
 		}
 	}
-	public static void questCancel() {
-	    	String ID;
-			System.out.print("受注を取り消す依頼ID：");
-			BufferedReader buffer4 = new BufferedReader(new InputStreamReader(System.in));
-			try {
-				ID = buffer4.readLine();
-			} catch (IOException e) {
-				// TODO 自動生成された catch ブロック
-				e.printStackTrace();
-			}
-			
-		if(truecancelOrder(userID,Id)){
-			System.out.printf("受注取り消し成功\n");
+	public void questCancel(String userID) {
+		    Scanner scanner = new Scanner(System.in);
+	        int ID = scanner.nextInt();
+	        scanner.close();
+	        if(RequestManagement.cancelOrder(userID, ID)){
+	        	System.out.printf("受注取り消し成功\n");
 			}else{
 				System.out.printf("受注取り消し失敗\n");
 			}
@@ -111,17 +105,21 @@ public class CUI {
 
 
 	/*--5406 郷地--*/
-	public static void listRequest() {
-		ArrayList<RequestRecord> array = RequestManagement.getAllOrder();
-		for (RequestRecord record : array) {
-		    System.out.println("依頼ID:"+record.getRequestId());
-		    System.out.println("依頼名:"+record.getName());
-		    System.out.println("報酬ポイント:"+record.getPoint());
-		    System.out.println("-----");
-		}
-	}
-	public static void addUser() {
-		BufferedReader buffer;	
+	/*すべての依頼を出力するメソッドが存在しない*/
+//	public static void listRequest() {
+//		ArrayList<RequestRecord> array = RequestManagement.getAllOrder();
+//		for (RequestRecord record : array) {
+//		    System.out.println("依頼ID:"+record.getRequestId());
+//		    System.out.println("依頼名:"+record.getName());
+//		    System.out.println("報酬ポイント:"+record.getPoint());
+//		    System.out.println("-----");
+//		}
+//	}
+//	
+	
+	
+	public void addUser() {
+		BufferedReader buffer = null;
 		//ユーザー登録変数
 		String add_ID = null;
 		String add_name = null;
@@ -129,7 +127,6 @@ public class CUI {
 		
 		try {
 			System.out.print("名前:");
-
 			add_name = buffer.readLine();
 			System.out.print("ID:");
 			add_ID = buffer.readLine();
@@ -144,8 +141,8 @@ public class CUI {
 			System.out.println("登録失敗");
 		}
 	}
-	public static void addQuest() {
-		BufferedReader buffer;	
+	public void addQuest(String userID) {
+		BufferedReader buffer = null;	
 		//追加依頼についての変数
 		String request_name = null;	//依頼名
 		String contents = null;	//内容
@@ -181,5 +178,4 @@ public class CUI {
 		}
 	}
 	/*--郷地 終わり--*/
-
 }

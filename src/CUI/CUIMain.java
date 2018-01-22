@@ -20,20 +20,21 @@ public class CUIMain {
 		String userID = "";
 		
 		// TODO 自動生成されたメソッド・スタブ
-		System.out.printf("ログインしてください\n");
+		System.out.println("-ログインしてください-");
 		CUI cui = new CUI();
 	//	System.out.printf(menu_text);
 		while(true){
 		/*--5403 小田--*/
 			String pass = null;
-				BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in));
+			System.out.print("ID : ");
+			BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in));
 				try {
 					userID = buffer.readLine();
 				} catch (IOException e) {
 					// TODO 自動生成された catch ブロック
 					e.printStackTrace();
 				}
-				
+				System.out.print("PASSWD : ");
 				BufferedReader buffer2 = new BufferedReader(new InputStreamReader(System.in));
 				try {
 					pass = buffer2.readLine();
@@ -49,6 +50,7 @@ public class CUIMain {
 		/*--小田終わり--*/
 			
 		while(true){
+			System.out.print(userID + ">");
 			BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in));
 			try {
 				cmd = buffer.readLine();
@@ -68,20 +70,20 @@ public class CUIMain {
 
 		/*--5407 小島空--*/
 			}else if(cmd.equals("quest detail")){
-				CUI.questDetail();
+				cui.questDetail();
 			}else if(cmd.equals("post request")){
-				CUI.questRequest();
+				cui.questRequest(userID);
 			}else if(cmd.equals("cancel request")){
-				CUI.questCancel();
+				cui.questCancel(userID);
 		/*--小島終わり--*/
         
 		/*--5406 郷地素--*/
-			}else if(cmd.equals("list request")){
-				CUI.listRequest();
+//			}else if(cmd.equals("list request")){
+//				CUI.listRequest();
 			}else if(cmd.equals("add user")){	
-				CUI.addUser();
+				cui.addUser();
 			}else if(cmd.equals("add quest")){
-				CUI.addQuest();
+				cui.addQuest(userID);
 			}else{
 				System.out.println("不明なコマンドです");
 			}

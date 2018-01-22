@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
+import CUI.CUIMain;
 import DB.SQLManager;
 import DB.UserDBUtil;
 
@@ -15,13 +16,15 @@ public class Main {
 	 * @throws Exception
 	 */
 	public static void main(String[] args) throws Exception {
-		SQLManager.launchSQLManager();//SQLサーバーとの接続を確立
-		
-		/*
-		 * 以下にコードを書く
-		 */
-		
-		DBtest();///DB班のテスト用メソッド
+//		SQLManager.launchSQLManager();//SQLサーバーとの接続を確立
+//		
+//		/*
+//		 * 以下にコードを書く
+//		 */
+//		
+//		DBtest();///DB班のテスト用メソッド
+		CUIMain cui = new CUIMain();
+		cui.main();
 	}
 	
 	public static void DBtest(){
