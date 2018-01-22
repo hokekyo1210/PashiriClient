@@ -11,29 +11,17 @@ import java.io.InputStreamReader;
 
 public class CUIMain {
 	
-	public static User user;///ログイン中のユーザ
+	public User user;///ログイン中のユーザ
 	
-	public static void main() {
+	public void main() {
 		String cmd = null;
 		
 		//ユーザID
-		String userID = null;
-		
-		//ユーザー登録変数
-		String add_ID = null;
-		String add_name = null;
-		String add_pass = null;
-		
-		//追加依頼についての変数
-		String request_name = null;	//依頼名
-		String contents = null;	//内容
-		int point = 0;	//ポイント
-		int deposit =0;	//手前ポイント
-		String date = null;	//期限
+		String userID = "";
 		
 		// TODO 自動生成されたメソッド・スタブ
 		System.out.printf("ログインしてください\n");
-
+		CUI cui = new CUI();
 	//	System.out.printf(menu_text);
 		while(true){
 		/*--5403 小田--*/
@@ -71,11 +59,11 @@ public class CUIMain {
 
 		/*--5411 鈴木陸馬--*/
 			if(cmd.equals("list user")){
-				CUI.listUser();
+				cui.listUser();
 			}else if(cmd.equals("list order")){
-				CUI.listOrder();
+				cui.listOrder(userID);
 			}else if(cmd.equals("list post")){
-				CUI.listPoint();
+				cui.listPost(userID);
 		/*--鈴木終わり--*/
 
 		/*--5407 小島空--*/

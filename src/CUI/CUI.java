@@ -3,8 +3,11 @@ package CUI;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import DB.Pair;
 import DB.RequestRecord;
+import DB.User;
 import Request.RequestManagement;
+import Request.UserManagement;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -13,82 +16,99 @@ import java.io.InputStreamReader;
 public class CUI {
 	
 	/*--5411 鈴木--*/
-	public static void listUser() {
-		ArrayList<RequestRecord> array = RequestManagement.getUsersList();
-		for (RequestRecord user : array) {
-		    System.out.print("ユーザID:"+user.getClientId());
-		    System.out.println(" ユーザ名:"+user.getClientName());
+	public void listUser(){
+		ArrayList<User> array = UserManagement.getUsersList();
+		for(int i = 0; i < array.size(); i++){
+			System.out.print("User ID : " + array.get(i).getUserID());
+			System.out.println(" User name : "+array.get(i).getName());
 		}
 	}
-	public static void listOrder() {
-		ArrayList<RequestRecord> array = RequestManagement.getMyOrdering();
-		for (RequestRecord request : array) {
-			System.out.print("依頼ID:"+request.getRequestId());
-		  	System.out.println(" 依頼名:"+request.getName());
+//	public static void listUser() {
+//		ArrayList<User> array = RequestManagement.getUsersList();
+//		for (RequestRecord user : array) {
+//		    System.out.print("ユーザID:"+user.getClientId());
+//		    System.out.println(" ユーザ名:"+user.getClientName());
+//		}
+//	}
+	public void listOrder(String userID){
+		Pair<Integer, String>[] pairs = RequestManagement.getMyOrdering(userID);
+		for(int i = 0; i < pairs.length; i++){
+			System.out.print("Quest ID : "+ pairs[i].first);
+			System.out.println(" Quest Name : "+ pairs[i].second);
 		}
-
 	}
-	public static void listPoint() {
-		ArrayList<RequestRecord> array = RequestManagement.getMyOrdered();
-		for (RequestRecord request : array) {
-			System.out.print("依頼ID:"+request.getRequestId());
-			System.out.println(" 依頼名:"+request.getName());
+//	public static void listOrder() {
+//		ArrayList<RequestRecord> array = RequestManagement.getMyOrdering();
+//		for (RequestRecord request : array) {
+//			System.out.print("依頼ID:"+request.getRequestId());
+//		  	System.out.println(" 依頼名:"+request.getName());
+//		}
+//
+//	}
+	
+	public void listPost(String userID){
+		Pair<Integer, String>[] pairs = RequestManagement.getMyOrdered(userID);
+		for(int i = 0; i < pairs.length; i++){
+			System.out.print("Quest ID : "+ pairs[i].first);
+			System.out.println(" Quest Name : "+ pairs[i].second);
 		}
 	}
+//	public static void listPoint() {
+//		ArrayList<RequestRecord> array = RequestManagement.getMyOrdered();
+//		for (RequestRecord request : array) {
+//			System.out.print("依頼ID:"+request.getRequestId());
+//			System.out.println(" 依頼名:"+request.getName());
+//		}
+//	}
 	/*--鈴木 終わり--*/
 
 	/*--5407 小島--*/
 	public static void questDetail() {
-	      System.out.printf("パシリ番号:");
-				    Scanner scanner = new Scanner(System.in);
-			        int number = scanner.nextInt();
-			        ArrayList<RequestRecord> array = showOrder();
-					for (RequestRecord request : array) {
-					    System.out.println("依頼ID:"+request.getRequestId());
-					    System.out.println("依頼名:"+request.getName());
-					    System.out.println("発注者ID:"+request.getClientId());
-					    System.out.println("受注者ID:"+request.getContractorId());
-					    System.out.println("報酬ポイント:"+request.getPoint());
-					    System.out.println("デポジット:"+request.getAdpoint());
-					    System.out.println("内容:"+request.getDetails());
-					    System.out.println("状態:"+request.getStatus());
-					    //System.out.println("期限:"+RequestManagement.getDeadline());
+		System.out.printf("パシリ番号:");
+	    Scanner scanner = new Scanner(System.in);
+        int number = scanner.nextInt();
+        RequestRecord request = RequestManagement.showOrder(number);
+	    System.out.println("依頼ID:"+request.getRequestId());
+	    System.out.println("依頼名:"+request.getName());
+	    System.out.println("発注者ID:"+request.getClientId());
+	    System.out.println("受注者ID:"+request.getContractorId());
+	    System.out.println("報酬ポイント:"+request.getPoint());
+	    System.out.println("デポジット:"+request.getAdpoint());
+	    System.out.println("内容:"+request.getDetails());
+	    System.out.println("状態:"+request.getStatus());
+	    scanner.close();
 	}
-	public static void questRequest() {
-	    String ID;
-					System.out.print("受注する依頼ID：");
-					BufferedReader buffer3 = new BufferedReader(new InputStreamReader(System.in));
-					try {
-						ID = buffer3.readLine();
-					} catch (IOException e) {
-						// TODO 自動生成された catch ブロック
-						e.printStackTrace();
-					}
-					
-				if(truepostOrder(userID,Id)){
-					System.out.printf("受注成功\n");
-					}else{
-						System.out.printf("受注失敗\n");
-					}
+	
+	public static void questRequest(String userID) {
+		System.out.print("受注する依頼ID：");
+	    Scanner scanner = new Scanner(System.in);
+        int ID = scanner.nextInt();
+        scanner.close();
+		if(RequestManagement.postOrder(ID, userID)){
+			System.out.printf("受注成功\n");
+		}else{
+			System.out.printf("受注失敗\n");
+		}
 	}
 	public static void questCancel() {
 	    	String ID;
-					System.out.print("受注を取り消す依頼ID：");
-					BufferedReader buffer4 = new BufferedReader(new InputStreamReader(System.in));
-					try {
-						ID = buffer4.readLine();
-					} catch (IOException e) {
-						// TODO 自動生成された catch ブロック
-						e.printStackTrace();
-					}
-					
-				if(truecancelOrder(userID,Id)){
-					System.out.printf("受注取り消し成功\n");
-					}else{
-						System.out.printf("受注取り消し失敗\n");
-					}
+			System.out.print("受注を取り消す依頼ID：");
+			BufferedReader buffer4 = new BufferedReader(new InputStreamReader(System.in));
+			try {
+				ID = buffer4.readLine();
+			} catch (IOException e) {
+				// TODO 自動生成された catch ブロック
+				e.printStackTrace();
+			}
+			
+		if(truecancelOrder(userID,Id)){
+			System.out.printf("受注取り消し成功\n");
+			}else{
+				System.out.printf("受注取り消し失敗\n");
+			}
 	}
 	/*--小島 終わり--*/
+
 
 	/*--5406 郷地--*/
 	public static void listRequest() {
@@ -101,8 +121,15 @@ public class CUI {
 		}
 	}
 	public static void addUser() {
+		BufferedReader buffer;	
+		//ユーザー登録変数
+		String add_ID = null;
+		String add_name = null;
+		String add_pass = null;
+		
 		try {
 			System.out.print("名前:");
+
 			add_name = buffer.readLine();
 			System.out.print("ID:");
 			add_ID = buffer.readLine();
@@ -118,6 +145,13 @@ public class CUI {
 		}
 	}
 	public static void addQuest() {
+		BufferedReader buffer;	
+		//追加依頼についての変数
+		String request_name = null;	//依頼名
+		String contents = null;	//内容
+		int point = 0;	//ポイント
+		int deposit =0;	//手前ポイント
+		String date = null;	//期限
 		try {
 			System.out.print("依頼名:");
 			request_name = buffer.readLine();

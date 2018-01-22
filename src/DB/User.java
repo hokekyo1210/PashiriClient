@@ -23,4 +23,16 @@ public class User {
 		this.userID = userID;
 		this.points = points;
 	}
+	
+	public String getName(){
+		return name;
+	}
+	
+	public String getUserID(){
+		return userID;
+	}
+	
+	public int getPoints(){
+		return points;
+	}
 }
