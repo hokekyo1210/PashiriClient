@@ -57,7 +57,7 @@ public class RequestManagement {
 	/**
 	 * <p>未受注の依頼をRequestRecord型のリストで返すメソッド</p>
 	 * @author 5410 鈴木勇哉
-	 * @return ArrayList<RequestRecord> 型の配列
+	 * @return RequestRecordのArrayList
 	 */
 	public static ArrayList<RequestRecord> getAllYetOrder(){
 		Pair<Integer,String>[] requests = RequestDBUtil.getRequests(null, "-1", -1);
