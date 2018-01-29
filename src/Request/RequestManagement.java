@@ -115,7 +115,48 @@ public class RequestManagement {
         		return false;
         }
 	}
-
+/**
+ * 実行結果のログ
+ * -ログインしてください-
+ID : matono
+PASSWD : matono
+ログイン成功
+matono>add quest
+依頼名:matono
+依頼内容:aaaa
+ポイント:100
+手前ポイント:10
+期限:2018/01/30_00:00:00
+Insert into Requests(Name,Point,AdvancePoint,Details,Deadline) values('matono','100','10','aaaa', '2018-01-30 00:00:00' )
+sql:SELECT * FROM Requests WHERE RequestID='16'
+登録成功
+matono
+aaaa
+100
+10
+2018/01/30_00:00:00
+matono>list request
+不明なコマンドです
+matono>list order
+Quest ID : -1 Quest Name : null
+matono>list poss
+不明なコマンドです
+matono>poss
+不明なコマンドです
+matono>cancel
+不明なコマンドです
+matono>list user
+SELECT UserID from Users
+User ID : 5401 User name : name1
+User ID : IDhoge User name : hoge
+User ID : pointtest User name : test
+User ID : testUserID User name : testName
+matono>logout
+不明なコマンドです
+matono>login
+不明なコマンドです
+ * 
+ */
 
 
 
