@@ -19,6 +19,7 @@ public class SQLManager {
 	private static Connection requestConnection = null;
 	private static Connection userConnection = null;
 
+
 	/**
 	 * <p>MYSQLとの接続を行うメソッド</p>
 	 * @author 5415 土田,5409 坂本 雄一朗

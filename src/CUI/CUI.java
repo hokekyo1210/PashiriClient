@@ -142,30 +142,24 @@ public class CUI {
 		}
 	}
 	public void addQuest(String userID) {
-		BufferedReader buffer = null;	
+		BufferedReader buffer = null;
+		Scanner scan = new Scanner(System.in);
 		//追加依頼についての変数
 		String request_name = null;	//依頼名
 		String contents = null;	//内容
 		int point = 0;	//ポイント
 		int deposit =0;	//手前ポイント
 		String date = null;	//期限
-		try {
-			System.out.print("依頼名:");
-			request_name = buffer.readLine();
-			System.out.print("依頼内容:");
-			contents = buffer.readLine();
-			System.out.print("ポイント:");
-			Scanner scanner1 = new Scanner(System.in);
-			point = scanner1.nextInt();
-			System.out.print("手前ポイント:");
-			Scanner scanner2 = new Scanner(System.in);
-			deposit = scanner2.nextInt();
-			System.out.print("期限:");
-			date = buffer.readLine();
-			
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		System.out.print("依頼名:");
+		request_name = scan.next();
+		System.out.print("依頼内容:");
+		contents = scan.next();
+		System.out.print("ポイント:");
+		point = scan.nextInt();
+		System.out.print("手前ポイント:");
+		deposit = scan.nextInt();
+		System.out.print("期限:");
+		date = scan.next();
 		if(RequestManagement.addQuest(request_name,userID,point,deposit,contents,date)){
 			System.out.println("登録成功");
 			System.out.println(request_name);

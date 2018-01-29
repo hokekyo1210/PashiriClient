@@ -1,5 +1,8 @@
 package Request;
 import java.util.ArrayList;
+import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.text.ParseException;
 
 import DB.Pair;
 import DB.RequestDBUtil;
@@ -99,11 +102,20 @@ public class RequestManagement {
 	    return RequestDBUtil.removeRequest(reqId);
 	}
 
-	public static boolean addQuest(String request_name, String userID, int point, int deposit, String contents,
-			String date) {
-		// TODO Auto-generated method stub
-		return false;
+	public static boolean addQuest(String requestName, String userID, int point, int advancePoint, String details, String deadline){
+		SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy/MM/dd_hh:mm:ss");
+        
+        try {
+        		Date date = sdFormat.parse(deadline);
+        		RequestRecord ret = RequestDBUtil.addRequest(requestName, point, advancePoint, details, date);
+        		return true;
+        }
+        catch( ParseException pe ){
+        		pe.printStackTrace();
+        		return false;
+        }
 	}
+
 
 
 

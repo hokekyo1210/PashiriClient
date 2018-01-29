@@ -16,7 +16,7 @@ public class Main {
 	 * @throws Exception
 	 */
 	public static void main(String[] args) throws Exception {
-//		SQLManager.launchSQLManager();//SQLサーバーとの接続を確立
+		SQLManager.launchSQLManager();//SQLサーバーとの接続を確立
 //		
 //		/*
 //		 * 以下にコードを書く
