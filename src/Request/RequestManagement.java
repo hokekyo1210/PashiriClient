@@ -8,20 +8,6 @@ import DB.User;
 import DB.UserDBUtil;
 
 public class RequestManagement {
-	/**
-	 * <p>全ユーザのインスタンスを取得するメソッド</p>
-	* @author	5417成岡大輝
-	* @return	全ユーザの情報が格納されたリスト。
-	*/
-	public ArrayList<User> getUsersList(){
-		String[] userIds = UserDBUtil.getAllUserID();// DBから全ユーザの情報を取得するメソッド。DB班の実装待ち。名称未定。
-		ArrayList<User> ret = new ArrayList<User>();
-		for(int i = 0; i < userIds.length; i++) {
-			User u = UserDBUtil.getUser(userIds[i]);
-			ret.add(u);
-		}
-		return ret;
-	}
 
 	/**
      * <p> ユーザIDを引数に、そのユーザが発注している依頼の一覧を取得するメソッド </p>
@@ -29,7 +15,7 @@ public class RequestManagement {
      * @param userId ユーザID (String)
      * @return Pair配列 (依頼IDと依頼内容をまとめたクラスの配列, 失敗した場合はnull)
      */
-    public Pair<Integer,String>[] getMyOrdering(String userId) {
+    public static Pair<Integer,String>[] getMyOrdering(String userId) {
     	if (userId == null || userId == "") {
             System.out.println("error : ユーザIDが未入力(getMyOrdering)"); // デバッグ用
             return null;
@@ -91,7 +77,7 @@ public class RequestManagement {
 	 * @param	posterId 受注者ID
 	 * @return 受注の成功の可否
 	 */
-	public boolean postOrder(int reqId, String posterId){
+	public static boolean postOrder(int reqId, String posterId){
 		RequestRecord req = RequestDBUtil.getRequest(reqId);
 		if(req.getRequestId() == -1)return false;
 		return RequestDBUtil.setContractorID(reqId, posterId);
@@ -104,13 +90,19 @@ public class RequestManagement {
 	 * @param  reqId	依頼id
 	 * @return 削除の可否
 	 */
-	public boolean cancelOrder(String userId, int reqId){
+	public static boolean cancelOrder(String userId, int reqId){
 	    RequestRecord req = RequestDBUtil.getRequest(reqId);
 	    String clientId = req.getClientId();
 	    if(userId.equals(clientId)){
 	        return false;
 	    }
 	    return RequestDBUtil.removeRequest(reqId);
+	}
+
+	public static boolean addQuest(String request_name, String userID, int point, int deposit, String contents,
+			String date) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 
