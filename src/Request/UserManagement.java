@@ -32,8 +32,8 @@ public class UserManagement {
 	 * @param	deadline 依頼の期限
 	 * @return	登録成功の可否。
 	*/
-	public static boolean addQuest(String requestName, int point, int advancePoint, String details, Date deadline){
-		RequestRecord ret = RequestDBUtil.addRequest(requestName, point, advancePoint, details, deadline);
+	public static boolean addQuest(String requestName, String clientID, int point, int advancePoint, String details, Date deadline){
+		RequestRecord ret = RequestDBUtil.addRequest(requestName, clientID,point, advancePoint, details, deadline);
 		return (ret==null)?false:true;
 	}
 
@@ -44,10 +44,9 @@ public class UserManagement {
 	* @param	passwd	パスワード
 	* @return	ログインの成功可否
 	*/
-	public static boolean login(String userid, String passwd){
+	public static User login(String userid, String passwd){
 		User u = UserDBUtil.login(userid, passwd);
-		if(u != null)return true;
-		else return false;
+		return u;
 	}
 	
 	/**

@@ -12,7 +12,6 @@ public class UserDBUtil {
 		   try {
 		       int result =SQLManager.userDBUpdate(query);
 		   } catch (Exception e) {
-		       e.printStackTrace();
 		       return false;  //クエリ送信失敗
 		   }
 		   return true;   //ユーザ追加成功

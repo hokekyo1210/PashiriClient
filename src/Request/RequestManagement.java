@@ -107,7 +107,7 @@ public class RequestManagement {
         
         try {
         		Date date = sdFormat.parse(deadline);
-        		RequestRecord ret = RequestDBUtil.addRequest(requestName, point, advancePoint, details, date);
+        		RequestRecord ret = RequestDBUtil.addRequest(requestName, userID,point, advancePoint, details, date);
         		return true;
         }
         catch( ParseException pe ){

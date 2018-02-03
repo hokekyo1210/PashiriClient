@@ -77,14 +77,13 @@ public class CUI {
 	    System.out.println("デポジット:"+request.getAdpoint());
 	    System.out.println("内容:"+request.getDetails());
 	    System.out.println("状態:"+request.getStatus());
-	    scanner.close();
+//	    scanner.close();
 	}
 	
 	public void questRequest(String userID) {
 		System.out.print("受注する依頼ID：");
 	    Scanner scanner = new Scanner(System.in);
         int ID = scanner.nextInt();
-        scanner.close();
 		if(RequestManagement.postOrder(ID, userID)){
 			System.out.printf("受注成功\n");
 		}else{
@@ -94,7 +93,6 @@ public class CUI {
 	public void questCancel(String userID) {
 		    Scanner scanner = new Scanner(System.in);
 	        int ID = scanner.nextInt();
-	        scanner.close();
 	        if(RequestManagement.cancelOrder(userID, ID)){
 	        	System.out.printf("受注取り消し成功\n");
 			}else{
@@ -106,35 +104,31 @@ public class CUI {
 
 	/*--5406 郷地--*/
 	/*すべての依頼を出力するメソッドが存在しない*/
-//	public static void listRequest() {
-//		ArrayList<RequestRecord> array = RequestManagement.getAllOrder();
-//		for (RequestRecord record : array) {
-//		    System.out.println("依頼ID:"+record.getRequestId());
-//		    System.out.println("依頼名:"+record.getName());
-//		    System.out.println("報酬ポイント:"+record.getPoint());
-//		    System.out.println("-----");
-//		}
-//	}
-//	
+	public static void listRequest() {
+		ArrayList<RequestRecord> array = RequestManagement.getAllYetOrder();
+		for (RequestRecord record : array) {
+		    System.out.println("依頼ID:"+record.getRequestId());
+		    System.out.println("依頼名:"+record.getName());
+		    System.out.println("報酬ポイント:"+record.getPoint());
+		    System.out.println("-----");
+		}
+	}
+	
 	
 	
 	public void addUser() {
-		BufferedReader buffer = null;
+		Scanner scanner = new Scanner(System.in);
 		//ユーザー登録変数
 		String add_ID = null;
 		String add_name = null;
 		String add_pass = null;
 		
-		try {
-			System.out.print("名前:");
-			add_name = buffer.readLine();
-			System.out.print("ID:");
-			add_ID = buffer.readLine();
-			System.out.print("パスワード:");
-			add_pass = buffer.readLine();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		System.out.print("名前:");
+		add_name = scanner.next();
+		System.out.print("ID:");
+		add_ID = scanner.next();
+		System.out.print("パスワード:");
+		add_pass = scanner.next();
 		if(UserDBUtil.addUser(add_ID,add_pass,add_name)){
 			System.out.println("登録成功");
 		} else {

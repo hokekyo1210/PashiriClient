@@ -205,7 +205,7 @@ public class RequestDBUtil {
 			query+=" status="+status;
 			flag=1;
 		}
-		//System.out.println(query);
+		System.out.println(query);
 
 		try {
 			ResultSet resultSet =SQLManager.requestDBQuery(query);
@@ -251,11 +251,11 @@ public class RequestDBUtil {
 	*
 	*@return 追加に成功した場合はRequestRecordのインスタンス、失敗であればnull
 	*/
-	public static RequestRecord addRequest( String requestName, int point,
+	public static RequestRecord addRequest( String requestName,String clientID, int point,
 	                           	int advancePoint, String details, Date deadline){
 	SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	String convDeadline = sdFormat.format( deadline );
-	   String query = "Insert into Requests(Name,Point,AdvancePoint,Details,Deadline) values('"+requestName+"','"+point+"','"+advancePoint+"','"+details+"', '"+convDeadline+"' )";
+	   String query = "Insert into Requests(Name,ClientID,Point,AdvancePoint,Details,Deadline) values('"+requestName+"','"+clientID+"','"+point+"','"+advancePoint+"','"+details+"', '"+convDeadline+"' )";
 	   System.out.println(query);
 	   try {
 		   	SQLManager.requestDBUpdate(query);

@@ -3,7 +3,10 @@ package CUI;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import javax.security.auth.login.LoginContext;
+
 import DB.User;
+import Request.UserManagement;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -28,21 +31,22 @@ public class CUIMain {
 			String pass = null;
 			System.out.print("ID : ");
 			BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in));
-				try {
-					userID = buffer.readLine();
-				} catch (IOException e) {
-					// TODO 自動生成された catch ブロック
-					e.printStackTrace();
-				}
-				System.out.print("PASSWD : ");
-				BufferedReader buffer2 = new BufferedReader(new InputStreamReader(System.in));
-				try {
-					pass = buffer2.readLine();
-				} catch (IOException e) {
-					// TODO 自動生成された catch ブロック
-					e.printStackTrace();
-				}
-			if(true/*login(userID,pass*/){
+			try {
+				userID = buffer.readLine();
+			} catch (IOException e) {
+				// TODO 自動生成された catch ブロック
+				e.printStackTrace();
+			}
+			System.out.print("PASSWD : ");
+			BufferedReader buffer2 = new BufferedReader(new InputStreamReader(System.in));
+			try {
+				pass = buffer2.readLine();
+			} catch (IOException e) {
+				// TODO 自動生成された catch ブロック
+				e.printStackTrace();
+			}
+			user = UserManagement.login(userID, pass);
+			if(user != null){
 				System.out.printf("ログイン成功\n");
 				break;
 			}
@@ -78,8 +82,8 @@ public class CUIMain {
 		/*--小島終わり--*/
         
 		/*--5406 郷地素--*/
-//			}else if(cmd.equals("list request")){
-//				CUI.listRequest();
+			}else if(cmd.equals("list request")){
+				CUI.listRequest();
 			}else if(cmd.equals("add user")){	
 				cui.addUser();
 			}else if(cmd.equals("add quest")){
