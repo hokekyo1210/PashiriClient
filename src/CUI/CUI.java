@@ -102,8 +102,10 @@ public class CUI {
 	/*--小島 終わり--*/
 
 
-	/*--5406 郷地--*/
-	/*すべての依頼を出力するメソッドが存在しない*/
+	/**
+	 * <p> 依頼一覧を表示するメソッド </p>
+	 * @author 5406 郷地素
+	 */
 	public static void listRequest() {
 		ArrayList<RequestRecord> array = RequestManagement.getAllYetOrder();
 		for (RequestRecord record : array) {
@@ -115,7 +117,10 @@ public class CUI {
 	}
 	
 	
-	
+	/**
+	 * <p> ユーザ情報を入力させ、ユーザを追加するメソッド </p>
+	 * @author 5406 郷地素
+	 */
 	public void addUser() {
 		Scanner scanner = new Scanner(System.in);
 		//ユーザー登録変数
@@ -135,6 +140,12 @@ public class CUI {
 			System.out.println("登録失敗");
 		}
 	}
+	
+	/**
+	 * <p> 依頼情報を入力させ、依頼を追加するメソッド </p>
+	 * @author 5406 郷地素
+	 * @param ユーザID
+	 */
 	public void addQuest(String userID) {
 		BufferedReader buffer = null;
 		Scanner scan = new Scanner(System.in);
