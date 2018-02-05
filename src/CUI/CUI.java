@@ -16,7 +16,10 @@ import java.io.InputStreamReader;
 
 public class CUI {
 	
-	/*--5411 鈴木--*/
+    /**
+       <p>ユーザの一覧を表示するためのメソッド</p>
+       @author 5411 鈴木
+    */
 	public void listUser(){
 		ArrayList<User> array = UserManagement.getUsersList();
 		for(int i = 0; i < array.size(); i++){
@@ -31,6 +34,12 @@ public class CUI {
 //		    System.out.println(" ユーザ名:"+user.getClientName());
 //		}
 //	}
+	
+    /**
+       <p>発注した依頼リストを表示ためのメソッド</p>
+       @author 5411 鈴木
+       @param userID ユーザID
+    */
 	public void listOrder(String userID){
 		Pair<Integer, String>[] pairs = RequestManagement.getMyOrdering(userID);
 		for(int i = 0; i < pairs.length; i++){
@@ -46,7 +55,14 @@ public class CUI {
 //		}
 //
 //	}
+
+
 	
+    /**
+       <p>ユーザの一覧を表示するためのメソッド</p>
+       @author 5411 鈴木
+       @param userID ユーザID
+    */	
 	public void listPost(String userID){
 		Pair<Integer, String>[] pairs = RequestManagement.getMyOrdered(userID);
 		for(int i = 0; i < pairs.length; i++){
@@ -64,6 +80,11 @@ public class CUI {
 	/*--鈴木 終わり--*/
 
 	/*--5407 小島--*/
+	
+    /**
+       <p>依頼の詳細を表示するためのメソッド</p>
+       @author 5407　小島空
+    */
 	public void questDetail() {
 		System.out.printf("パシリ番号:");
 	    Scanner scanner = new Scanner(System.in);
@@ -79,7 +100,14 @@ public class CUI {
 	    System.out.println("状態:"+request.getStatus());
 //	    scanner.close();
 	}
+
+
 	
+    /**
+       <p>依頼を受注するためのメソッド</p>
+       @author 5407　小島空
+       @param userID ユーザID
+    */	
 	public void questRequest(String userID) {
 		System.out.print("受注する依頼ID：");
 	    Scanner scanner = new Scanner(System.in);
@@ -90,6 +118,12 @@ public class CUI {
 			System.out.printf("受注失敗\n");
 		}
 	}
+
+    /**
+       <p>依頼の取り消しのためのメソッド</p>
+       @author 5407　小島空
+       @param userID ユーザID
+    */	
 	public void questCancel(String userID) {
 		    Scanner scanner = new Scanner(System.in);
 	        int ID = scanner.nextInt();
@@ -102,10 +136,12 @@ public class CUI {
 	/*--小島 終わり--*/
 
 
-	/**
-	 * <p> 依頼一覧を表示するメソッド </p>
-	 * @author 5406 郷地素
-	 */
+    /**
+       <p>依頼一覧を表示するメソッド</p>
+       @author 5406　郷地素
+    */	
+	/*--5406 郷地--*/
+	/*すべての依頼を出力するメソッドが存在しない*/
 	public static void listRequest() {
 		ArrayList<RequestRecord> array = RequestManagement.getAllYetOrder();
 		for (RequestRecord record : array) {
@@ -117,10 +153,11 @@ public class CUI {
 	}
 	
 	
-	/**
-	 * <p> ユーザ情報を入力させ、ユーザを追加するメソッド </p>
-	 * @author 5406 郷地素
-	 */
+
+    /**
+       <p>ユーザ情報を入力させユーザを追加するメソッド</p>
+       @author 5406　郷地素
+    */		
 	public void addUser() {
 		Scanner scanner = new Scanner(System.in);
 		//ユーザー登録変数
@@ -140,12 +177,12 @@ public class CUI {
 			System.out.println("登録失敗");
 		}
 	}
-	
-	/**
-	 * <p> 依頼情報を入力させ、依頼を追加するメソッド </p>
-	 * @author 5406 郷地素
-	 * @param ユーザID
-	 */
+
+    /**
+       <p>依頼情報を入力させ依頼を追加するメソッド</p>
+       @author 5406　郷地素
+       @param ユーザID
+    */	
 	public void addQuest(String userID) {
 		BufferedReader buffer = null;
 		Scanner scan = new Scanner(System.in);
